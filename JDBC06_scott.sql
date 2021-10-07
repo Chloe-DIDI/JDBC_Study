@@ -1,0 +1,78 @@
+SELECT USER
+FROM DUAL;
+--==>> SCOTT
+
+SELECT * 
+FROM TBL_MEMBER;
+--==>>
+/*
+1	김진희	010-1111-1111
+2	이찬호	010-2222-2222
+3	박혜진	010-3333-3333
+4	윤유동	010-4444-4444
+*/
+
+--○ 데이터 입력 쿼리문 구성
+INSERT INTO TBL_MEMBER(SID, NAME, TEL)
+VALUES(MEMBERSEQ.NEXTVAL, '박혜진', '010-5555-5555');
+--> 한 줄 구성
+INSERT INTO TBL_MEMBER(SID, NAME, TEL) VALUES(MEMBERSEQ.NEXTVAL, '박혜진', '010-5555-5555')
+;
+--==>> 1 행 이(가) 삽입되었습니다.
+
+
+COMMIT;
+--==>> 커밋 완료.
+
+-- Statement 작업 객체 사용
+SELECT *
+FROM TBL_MEMBER;
+--==>>
+/*
+1	김진희	010-1111-1111
+2	이찬호	010-2222-2222
+3	박혜진	010-3333-3333
+4	윤유동	010-4444-4444
+5	박혜진	010-5555-5555
+*/
+
+
+
+--○ 데이터 전체 조회 쿼리문 구성
+SELECT SID, NAME, TEL
+FROM TBL_MEMBER
+ORDER BY SID;
+--> 한 줄 구성
+SELECT SID, NAME, TEL FROM TBL_MEMBER ORDER BY SID
+;
+
+
+SELECT *
+FROM TBL_MEMBER;
+--==>>
+/*
+5	박혜진	010-5555-5555
+6	정효진	010-6666-6666
+2	이찬호	010-2222-2222
+3	박혜진	010-3333-3333
+4	윤유동	010-4444-4444
+1	김진희	010-1111-1111
+7	손다정	010-7777-7777
+9	최현정	010-9999-9999
+12	손범석	010-1212-1212
+13	최수지	010-1313-1313
+14	채지윤	010-1414-1414
+8	박효빈	010-8888-8888
+*/
+------------------------------------------
+-- 잘 못 입력 한 값 업데이트--
+
+
+UPDATE TBL_MEMBER
+SET SID = 9
+WHERE SID = 10;
+
+
+DELETE
+FROM TBL_MEMBER
+WHERE SID = 11;
